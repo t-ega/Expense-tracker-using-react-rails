@@ -60,6 +60,6 @@ end
 
 gem "shakapacker", "= 7.2"
 
-gem "react-rails", "= 3.2"
+gem 'react_on_rails', '~> 13.4'
 
 gem "devise", "~> 4.9"

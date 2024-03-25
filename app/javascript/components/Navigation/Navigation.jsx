@@ -1,4 +1,6 @@
 import React from "react"
+import { NavLink } from 'react-router-dom';
+
 import { NavStyled} from "../../styles/app-syle";
 import {menuItems} from "../../utils/menu-items";
 import {signout} from "../../utils/icons";
@@ -17,16 +19,14 @@ export const Navigation = ({ active, setActive }) => {
             <ul className="menu-items">
 
                 {menuItems.map(item => {
-                    return <li key={item.id}
-                               onClick={() => setActive(item.id)}
-                               className={active === item.id ? "active" : ""}
-                    >
-
-                        {item.icon}
-                        <span>
-                            {item.title}
-                        </span>
-                    </li>
+                    return (<></>
+                    // <NavLink key={item.id} exact to="/" activeClassName="active">
+                    //     {item.icon}
+                    //     <span>
+                    //         {item.title}
+                    //     </span>
+                    // </NavLink>
+                    )
                 })}
             </ul>
             <div className="bottom-nav">
