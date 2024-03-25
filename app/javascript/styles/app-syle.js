@@ -129,3 +129,8 @@ export const ExpensesStyled = styled.div`
 `
 export const IncomesStyled = styled.div`
 `
+
+export const FormStyled = styled.div`
+    
+
+`
