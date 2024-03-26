@@ -1,7 +1,7 @@
 import {FormStyled} from "../../styles/app-syle";
 import React,  {useState} from "react";
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker"
+// import "react-datepicker/dist/react-datepicker.css";
 import {useGlobalContext} from "../../Context/globalContext";
 
 export const Form = () => {
@@ -37,17 +37,17 @@ export const Form = () => {
                 placeholder={"Salary Amount "}
                 onChange={handleInput("amount")}/>
         </div>
-        <div className="input-control">
-            <DatePicker
-                id="date"
-                placeholderText={"Enter a Date"}
-                selected={date}
-                dateFormat="dd/MM/yyyy"
-                onChange={(date) => {
-                    setInputState({...inputState, date: date})
-                }}
-            />
-        </div>
+        {/*<div className="input-control">*/}
+        {/*    <DatePicker*/}
+        {/*        id="date"*/}
+        {/*        placeholderText={"Enter a Date"}*/}
+        {/*        selected={date}*/}
+        {/*        dateFormat="dd/MM/yyyy"*/}
+        {/*        onChange={(date) => {*/}
+        {/*            setInputState({...inputState, date: date})*/}
+        {/*        }}*/}
+        {/*    />*/}
+        {/*</div>*/}
             <div className="selects input-control">
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
                     <option value=""  disabled >Select Option</option>

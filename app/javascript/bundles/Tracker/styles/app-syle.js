@@ -80,11 +80,12 @@ export const NavStyled = styled.nav`
         }
         
     }
-    .menu-items{
+    .menu-items {
         flex: 1;
         display: flex;
         flex-direction: column;
-        li {
+
+        a {
             display: grid;
             grid-template-columns: 40px auto;
             align-items: center;
@@ -102,23 +103,25 @@ export const NavStyled = styled.nav`
                 transition: all .4s ease-in-out;
             }
         }
-    }
- 
-    .active {
-        color: rgba(34, 34, 96, 1) !important;
 
-        i {
+
+        a.active {
             color: rgba(34, 34, 96, 1) !important;
-        }
-        &::before{
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: #222260;
-            border-radius: 0 10px 10px 0;
+
+            i {
+                color: rgba(34, 34, 96, 1) !important;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 4px;
+                height: 100%;
+                background: #222260;
+                border-radius: 0 10px 10px 0;
+            }
         }
     }
 `

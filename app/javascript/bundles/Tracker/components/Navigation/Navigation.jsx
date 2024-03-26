@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 import { NavStyled} from "../../styles/app-syle";
 import {menuItems} from "../../utils/menu-items";
@@ -19,13 +19,13 @@ export const Navigation = ({ active, setActive }) => {
             <ul className="menu-items">
 
                 {menuItems.map(item => {
-                    return (<></>
-                    // <NavLink key={item.id} exact to="/" activeClassName="active">
-                    //     {item.icon}
-                    //     <span>
-                    //         {item.title}
-                    //     </span>
-                    // </NavLink>
+                    return (
+                    <Link key={item.id} to={item.link} className={active ? "active" : ""} >
+                        {item.icon}
+                        <span>
+                            {item.title}
+                        </span>
+                    </Link>
                     )
                 })}
             </ul>

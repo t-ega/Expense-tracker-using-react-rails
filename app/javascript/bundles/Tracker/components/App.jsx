@@ -37,7 +37,7 @@ const App = () => {
                 <AppStyled className="App">
                     <MainLayout>
                         <Router>
-                            {/*<Navigation />*/}
+                            <Navigation />
                             <Routes>
                                 <Route exact path="/" component={Dashboard} />
                                 <Route path="/dashboard" component={Dashboard} />
