@@ -12,20 +12,19 @@ export const Expenses = () => {
     // incomes folder.
 
     const {appData } = useGlobalContext();
-    let { expenses, csrf_token, total } = appData;
-
+    let { expenses, csrf_token, total_expenses } = appData;
 
     return ( <IncomeStyled>
         <InnerLayout>
             <h1>Expenses</h1>
-            <h2 className="total-income">Total Expenses: <span>${total}</span> </h2>
+            <h2 className="total-income">Total Expenses: <span>${total_expenses}</span> </h2>
             <div className="income-content">
                 <div className="form-container">
                     <ExpenseForm />
                 </div>
                 <div className="incomes">
                     {expenses.map(expense => {
-                        const {id, title, amount, date, category, description, type} = expense;
+                        const {id, title, amount, date, category, description} = expense;
                         return <IncomeItem
                             key={id}
                             id={id}
@@ -33,7 +32,7 @@ export const Expenses = () => {
                             description={description}
                             amount={amount}
                             date={date}
-                            type={type}
+                            type={"expenses"}
                             csrf_token={csrf_token}
                             category={category}
                             indicatorColor="var(--color-green)"

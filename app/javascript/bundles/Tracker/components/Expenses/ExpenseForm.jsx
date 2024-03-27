@@ -70,14 +70,14 @@ export const ExpenseForm = () => {
             </div>
             <div className="selects input-control">
                 <select required value={category} name="expense[category]" id="category" onChange={handleInput('category')}>
-                    <option value=""  disabled >Select Option</option>
-                    <option value="salary">Salary</option>
-                    <option value="freelancing">Freelancing</option>
-                    <option value="investments">Investments</option>
-                    <option value="stocks">Stocks</option>
-                    <option value="bitcoin">Bitcoin</option>
-                    <option value="bank">Bank Transfer</option>
-                    <option value="youtube">Youtube</option>
+                    <option value="" disabled>Select Option</option>
+                    <option value="education">Education</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="health">Health</option>
+                    <option value="subscriptions">Subscriptions</option>
+                    <option value="takeaways">Takeaways</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="travelling">Travelling</option>
                     <option value="other">Other</option>
                 </select>
             </div>

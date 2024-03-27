@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :expenses, only: [:index, :create, :destroy]
-  get 'hello_world', to: 'hello_world#index'
+  get "dashboard", to: "tracker#index"
+  get "view-transactions", to: "tracker#index"
   devise_for :users
   resources :incomes
   root "tracker#index"

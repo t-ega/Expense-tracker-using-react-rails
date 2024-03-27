@@ -20,7 +20,7 @@ export const Incomes = () => {
             </div>
                 <div className="incomes">
                     {incomes.map(income => {
-                        const {id, title, amount, date, category, description, type} = income;
+                        const {id, title, amount, date, category, description} = income;
                         return <IncomeItem
                             key={id}
                             id={id}
@@ -28,7 +28,7 @@ export const Incomes = () => {
                             description={description}
                             amount={amount}
                             date={date}
-                            type={type}
+                            type={"incomes"}
                             csrf_token={csrf_token}
                             category={category}
                             indicatorColor="var(--color-green)"

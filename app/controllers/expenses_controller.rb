@@ -21,16 +21,19 @@ class ExpensesController < ApplicationController
     @expenses = current_user.expense.all
 
     if @expense.save
-      redirect_to @expense, notice: 'Expense was successfully created.'
+      redirect_to expenses_url, notice: 'Expense was successfully created.'
     else
-      render "index", notice: "Expense was not successfully created"
+      flash[:alert] = "Expense was not successfully created: #{@expense.errors.full_messages.join(', ')}"
+      render "index"
     end
   end
 
   def update
+
     if @expense.update(expense_params)
       redirect_to @expense, notice: 'Expense was successfully updated.'
     else
+      flash[:alert] = "Expense was not successfully created: #{@expense.errors.full_messages.join(', ')}"
       render "index"
     end
   end

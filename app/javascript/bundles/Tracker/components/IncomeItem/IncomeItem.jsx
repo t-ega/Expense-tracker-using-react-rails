@@ -13,7 +13,6 @@ export const IncomeItem = ({
     date,
     category,
     description,
-    deleteItem,
     indicatorColor,
     type,
     csrf_token
@@ -32,7 +31,7 @@ export const IncomeItem = ({
                 </div>
 
             <div className="btn-con">
-                <form action={`/incomes/${id}`} method={'post'}>
+                <form action={`/${type}/${id}`} method={'post'}>
                     <input type="hidden" value={csrf_token} name={"authenticity_token"}/>
                     <input type="hidden" name="_method" value="delete"/>
 

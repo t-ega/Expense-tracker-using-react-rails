@@ -23,12 +23,24 @@ const App = ({ appData }) => {
         }
     }
 
+    const setTotalExpenses = () => {
+        const { expenses } = appData;
+        try{
+            appData['total_expenses'] = expenses.reduce((total, currentValue) => total + parseInt(currentValue.amount), 0)
+        }catch(ex){
+            console.log("Could not calculate total expenses", ex)
+        }
+    }
+
+
+
     const { currentPage } = appData
 
     useEffect(() => {
     // run this once the app component reloads
         setActive(currentPage)
         setTotalIncomes()
+        setTotalExpenses()
     }, [])
 
     const displayData = () => {
