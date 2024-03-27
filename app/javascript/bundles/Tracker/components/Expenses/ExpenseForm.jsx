@@ -94,7 +94,7 @@ export const ExpenseForm = () => {
             </div>
             <div className="submit-btn">
                 <Button
-                    name={'Add Income'}
+                    name={'Add Expense'}
                     icon={plus}
                     bPad={'.8rem 1.6rem'}
                     bRad={'30px'}

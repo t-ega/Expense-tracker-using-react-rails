@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :expenses
+  resources :expenses, only: [:index, :create, :destroy]
   get 'hello_world', to: 'hello_world#index'
   devise_for :users
   resources :incomes

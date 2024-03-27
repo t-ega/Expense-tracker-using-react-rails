@@ -16,7 +16,6 @@ const App = ({ appData }) => {
 
     const setTotalIncomes = () => {
         const { incomes } = appData;
-
         try{
             appData['total'] = incomes.reduce((total, currentValue) => total + parseInt(currentValue.amount), 0)
         }catch(ex){

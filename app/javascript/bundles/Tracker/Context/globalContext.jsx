@@ -5,11 +5,6 @@ const GlobalContext = React.createContext()
 
 export const GlobalProvider = ({ children, appData}) => {
 
-    const [incomes, setIncomes] = useState([])
-    const [expenses, setExpenses] = useState([])
-    const [error, setError] = useState(null)
-
-
     return (
         <GlobalContext.Provider value={{
             appData

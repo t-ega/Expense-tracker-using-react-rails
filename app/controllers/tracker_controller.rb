@@ -6,8 +6,8 @@ class TrackerController < ApplicationController
   # When the index page is called, we return all the
   # necessary data needed by the frontend to display on the dashboard
   def index
-    @incomes = Income.where user_id: current_user.id
-    @new_income = current_user.income.build
+    @incomes = Income.where user_id: current_user.id ||= []
+    @expenses = Expense.where user_id: current_user.id ||= []
 
   end
 

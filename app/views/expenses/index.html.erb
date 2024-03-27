@@ -1,0 +1,5 @@
+
+<%#  current page 4 represents the expense section %>
+<%# Note: This is not the best approach, but I'm keeping the logic minimal for the frontend %>
+
+<%= react_component("App", props: { appData:  { currentPage: 4, expenses: @expenses, csrf_token: form_authenticity_token  }}) %>

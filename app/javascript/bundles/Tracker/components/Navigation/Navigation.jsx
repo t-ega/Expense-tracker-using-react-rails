@@ -4,6 +4,7 @@ import {Link, NavLink} from 'react-router-dom';
 import { NavStyled} from "../../styles/app-syle";
 import {menuItems} from "../../utils/menu-items";
 import {signout} from "../../utils/icons";
+import convertStringToUrl from "../../utils/convert-to-url";
 
 export const Navigation = ({ active, setActive }) => {
 
@@ -20,15 +21,15 @@ export const Navigation = ({ active, setActive }) => {
 
                 {menuItems.map(item => {
                     return (
-                    <li
+                    <a
                         key={item.id}
-                        className={active === item.id ? "active" : ""}
-                        onClick={() => setActive(item.id)} >
+                        href={`/${convertStringToUrl(item.title)}`}
+                        className={active === item.id ? "active" : ""} >
                         {item.icon}
                         <span>
                             {item.title}
                         </span>
-                    </li>
+                    </a>
                     )
                 })}
             </ul>

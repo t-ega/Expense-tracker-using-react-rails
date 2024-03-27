@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
+
 import {IncomeStyled} from "../../styles/app-syle";
 import {InnerLayout} from "../../styles/layouts";
-import {Form} from "../Form/Form";
+
 import {useGlobalContext} from "../../Context/globalContext";
-import {IncomeItem} from "../IncomeItem/IncomeItem";
+import { IncomeItem } from "../IncomeItem/IncomeItem";
+import {ExpenseForm} from "./ExpenseForm";
 
 export const Expenses = () => {
+    // Note: Some files here are reused from the
+    // incomes folder.
+
     const {appData } = useGlobalContext();
-    const { incomes, csrf_token, total } = appData;
+    let { expenses, csrf_token, total } = appData;
 
 
     return ( <IncomeStyled>
@@ -16,11 +21,11 @@ export const Expenses = () => {
             <h2 className="total-income">Total Expenses: <span>${total}</span> </h2>
             <div className="income-content">
                 <div className="form-container">
-                    <Form />
+                    <ExpenseForm />
                 </div>
                 <div className="incomes">
-                    {incomes.map(income => {
-                        const {id, title, amount, date, category, description, type} = income;
+                    {expenses.map(expense => {
+                        const {id, title, amount, date, category, description, type} = expense;
                         return <IncomeItem
                             key={id}
                             id={id}
