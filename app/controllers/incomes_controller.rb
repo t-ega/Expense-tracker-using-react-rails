@@ -8,24 +8,24 @@ class IncomesController < ApplicationController
 
   def index
    @incomes = current_user.income.all
-   render "tracker/index"
+   render "index"
   end
 
   def show
+    @incomes = current_user.income.all
     render 'index'
   end
 
   def new
-    puts "lfll"
     @income = current_user.income.build
   end
 
   def create
 
     @income = current_user.income.build(income_params)
-
+    @incomes = current_user.income.all
     if @income.save
-      redirect_to @income, notice: 'Income was successfully created.'
+      redirect_to incomes_url, notice: 'Income was successfully created.'
 
     else
       flash[:alert] = "Income was not successfully created: #{@income.errors.full_messages.join(', ')}"
@@ -48,13 +48,13 @@ class IncomesController < ApplicationController
 
   def destroy
     @income.destroy
-    redirect_to income_url, notice: 'Income was successfully destroyed.'
+    redirect_to incomes_url, notice: 'Income was successfully destroyed.'
   end
 
   private
 
   def set_income
-    @income = Income.find(params[:id])
+    @income = current_user.income.find(params[:id])
   end
 
   def income_params

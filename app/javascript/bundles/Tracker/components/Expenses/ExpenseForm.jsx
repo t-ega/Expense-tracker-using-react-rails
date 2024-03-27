@@ -7,9 +7,9 @@ import {FormStyled} from "../../styles/app-syle";
 import {Button} from "../Button/Button";
 import {plus} from "../../utils/icons";
 
-export const Form = () => {
+export const ExpenseForm = () => {
     const { appData } = useGlobalContext()
-    const { csrf_token, income } = appData;
+    const { csrf_token, expense } = appData;
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -21,8 +21,8 @@ export const Form = () => {
     useEffect(() => {
         // run this when the component loads to check if the server is sending any income to
         // display to the client
-        if (income){
-            setInputState({...income})
+        if (expense){
+            setInputState({...expense})
         }
     }, []);
 
@@ -32,44 +32,44 @@ export const Form = () => {
     }
 
     return (
-        <FormStyled action={"/incomes"} method={'post'}>
-        <div className="input-control">
-            <input
-                type="hidden"
-                value={ csrf_token }
-                name={"authenticity_token"}
-            />
-        </div>
-        <div className="input-control">
-            <input
-                type="text"
-                value={title}
-                name={"income[title]"}
-                placeholder={"Salary Title"}
-                onChange={handleInput("title")}/>
-        </div>
-        <div className="input-control">
-            <input
-                type="number"
-                value={amount}
-                name={"income[amount]"}
-                placeholder={"Salary Amount "}
-                onChange={handleInput("amount")}/>
-        </div>
-        <div className="input-control">
-            <DatePicker
-                id="date"
-                placeholderText={"Enter a Date"}
-                selected={date}
-                name={"income[date]"}
-                dateFormat="dd/MM/yyyy"
-                onChange={(date) => {
-                    setInputState({...inputState, date: date})
-                }}
-            />
-        </div>
+        <FormStyled action={"/expenses"} method={'post'}>
+            <div className="input-control">
+                <input
+                    type="hidden"
+                    value={ csrf_token }
+                    name={"authenticity_token"}
+                />
+            </div>
+            <div className="input-control">
+                <input
+                    type="text"
+                    value={title}
+                    name={"expense[title]"}
+                    placeholder={"Expense Title"}
+                    onChange={handleInput("title")}/>
+            </div>
+            <div className="input-control">
+                <input
+                    type="number"
+                    value={amount}
+                    name={"expense[amount]"}
+                    placeholder={"Expense Amount "}
+                    onChange={handleInput("amount")}/>
+            </div>
+            <div className="input-control">
+                <DatePicker
+                    id="date"
+                    placeholderText={"Enter a Date"}
+                    selected={date}
+                    name={"expense[date]"}
+                    dateFormat="dd/MM/yyyy"
+                    onChange={(date) => {
+                        setInputState({...inputState, date: date})
+                    }}
+                />
+            </div>
             <div className="selects input-control">
-                <select required value={category} name="income[category]" id="category" onChange={handleInput('category')}>
+                <select required value={category} name="expense[category]" id="category" onChange={handleInput('category')}>
                     <option value=""  disabled >Select Option</option>
                     <option value="salary">Salary</option>
                     <option value="freelancing">Freelancing</option>
@@ -83,7 +83,7 @@ export const Form = () => {
             </div>
             <div className="input-control">
                 <textarea
-                    name="income[description]"
+                    name="expense[description]"
                     value={description}
                     placeholder='Add A Reference'
                     id="description"
@@ -102,6 +102,6 @@ export const Form = () => {
                     color={'#fff'}
                 />
             </div>
-    </FormStyled>
+        </FormStyled>
     )
 }
