@@ -1,8 +1,11 @@
-import {FormStyled} from "../../styles/app-syle";
 import React,  {useState} from "react";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
+
 import {useGlobalContext} from "../../Context/globalContext";
+import {FormStyled} from "../../styles/app-syle";
+import {Button} from "../Button/Button";
+import {plus} from "../../utils/icons";
 
 export const Form = () => {
     const { appData } = useGlobalContext()
@@ -82,8 +85,14 @@ export const Form = () => {
                 </textarea>
             </div>
             <div className="submit-btn">
-                <button type={"submit"}>Add Income</button>
-
+                <Button
+                    name={'Add Income'}
+                    icon={plus}
+                    bPad={'.8rem 1.6rem'}
+                    bRad={'30px'}
+                    bg={'var(--color-accent'}
+                    color={'#fff'}
+                />
             </div>
     </FormStyled>
     )

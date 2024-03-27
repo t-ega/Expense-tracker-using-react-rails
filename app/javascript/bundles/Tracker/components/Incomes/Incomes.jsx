@@ -1,18 +1,38 @@
 import React from "react";
-import {IncomesStyled} from "../../styles/app-syle";
+import {IncomeStyled} from "../../styles/app-syle";
 import {InnerLayout} from "../../styles/layouts";
 import {Form} from "../Form/Form";
+import {useGlobalContext} from "../../Context/globalContext";
+import {IncomeItem} from "../IncomeItem/IncomeItem";
 
 export const Incomes = () => {
-    return <IncomesStyled>
+    const {appData } = useGlobalContext();
+    const { incomes } = appData
+    return ( <IncomeStyled>
         <InnerLayout>
             <h1>Incomes</h1>
             <div className="income-content">
             <div className="form-container">
                 <Form />
             </div>
-                <div className="incomes"></div>
+                <div className="incomes">
+                    {incomes.map(income => {
+                        const {id, title, amount, date, category, description, type} = income;
+                        return <IncomeItem
+                            key={id}
+                            id={id}
+                            title={title}
+                            description={description}
+                            amount={amount}
+                            date={date}
+                            type={type}
+                            category={category}
+                            indicatorColor="var(--color-green)"
+
+                        />
+                    })}
+                </div>
             </div>
         </InnerLayout>
-    </IncomesStyled>
+    </IncomeStyled> )
 }
