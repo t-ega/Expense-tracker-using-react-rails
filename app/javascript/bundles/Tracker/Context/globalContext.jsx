@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react"
 
 const GlobalContext = React.createContext()
 
-export const GlobalProvider = ({children}) => {
+export const GlobalProvider = ({ children, appData}) => {
 
     const [incomes, setIncomes] = useState([])
     const [expenses, setExpenses] = useState([])
@@ -11,7 +11,9 @@ export const GlobalProvider = ({children}) => {
 
 
     return (
-        <GlobalContext.Provider value={"hello"}>
+        <GlobalContext.Provider value={{
+            appData
+        }}>
             {children}
         </GlobalContext.Provider>
     )

@@ -85,7 +85,7 @@ export const NavStyled = styled.nav`
         display: flex;
         flex-direction: column;
 
-        a {
+        li {
             display: grid;
             grid-template-columns: 40px auto;
             align-items: center;
@@ -105,7 +105,7 @@ export const NavStyled = styled.nav`
         }
 
 
-        a.active {
+        .active {
             color: rgba(34, 34, 96, 1) !important;
 
             i {

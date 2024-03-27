@@ -1,5 +1,4 @@
-import * as React from "react"
-import {BrowserRouter as Router, Route, Routes,} from 'react-router-dom';
+import React, { useEffect } from "react"
 
 import { Globalstyle } from "../styles/globalstyle"
 import { MainLayout } from "../styles/layouts"
@@ -12,8 +11,17 @@ import {Incomes} from "./Incomes/Incomes";
 import {Expenses} from "./Expenses/Expenses";
 import {GlobalProvider} from "../Context/globalContext";
 
-const App = () => {
+const App = ({ appData }) => {
     const [active, setActive] = useState(1)
+    console.log(appData)
+
+    const { currentPage } = appData
+
+    useEffect(() => {
+    // run this once the app component reloads
+        setActive(currentPage)
+    }, [])
+
     const displayData = () => {
         switch (active){
             case 1:
@@ -26,25 +34,19 @@ const App = () => {
                 return <Expenses />
 
             default:
-                return <Dashboard />
-        }
+                return <Dashboard />}
     }
 
     return (
         <>
         <Globalstyle />
-            <GlobalProvider>
+            <GlobalProvider appData={appData}>
                 <AppStyled className="App">
                     <MainLayout>
-                        <Router>
-                            <Navigation />
-                            <Routes>
-                                <Route exact path="/" component={Dashboard} />
-                                <Route path="/dashboard" component={Dashboard} />
-                                <Route path="/incomes" component={Incomes} />
-                                <Route path="/expenses" component={Expenses} />
-                            </Routes>
-                        </Router>
+                            <Navigation active={active} setActive={setActive}/>
+                        <main>
+                            {displayData()}
+                        </main>
                         <Orb />
                     </MainLayout>
                 </AppStyled>

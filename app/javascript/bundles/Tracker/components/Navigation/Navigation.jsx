@@ -20,12 +20,15 @@ export const Navigation = ({ active, setActive }) => {
 
                 {menuItems.map(item => {
                     return (
-                    <Link key={item.id} to={item.link} className={active ? "active" : ""} >
+                    <li
+                        key={item.id}
+                        className={active === item.id ? "active" : ""}
+                        onClick={() => setActive(item.id)} >
                         {item.icon}
                         <span>
                             {item.title}
                         </span>
-                    </Link>
+                    </li>
                     )
                 })}
             </ul>

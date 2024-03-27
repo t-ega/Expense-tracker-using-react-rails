@@ -1,11 +1,12 @@
 import {FormStyled} from "../../styles/app-syle";
 import React,  {useState} from "react";
-// import DatePicker from "react-datepicker"
-// import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css";
 import {useGlobalContext} from "../../Context/globalContext";
 
 export const Form = () => {
-    const { } = useGlobalContext()
+    const { appData } = useGlobalContext()
+    const {csrf_token} = appData;
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -23,9 +24,16 @@ export const Form = () => {
         <FormStyled action={"/incomes"} method={'post'}>
         <div className="input-control">
             <input
+                type="hidden"
+                value={ csrf_token }
+                name={"authenticity_token"}
+            />
+        </div>
+        <div className="input-control">
+            <input
                 type="text"
                 value={title}
-                name={"title"}
+                name={"income[title]"}
                 placeholder={"Salary Title"}
                 onChange={handleInput("title")}/>
         </div>
@@ -33,23 +41,24 @@ export const Form = () => {
             <input
                 type="number"
                 value={amount}
-                name={"amount"}
+                name={"income[amount]"}
                 placeholder={"Salary Amount "}
                 onChange={handleInput("amount")}/>
         </div>
-        {/*<div className="input-control">*/}
-        {/*    <DatePicker*/}
-        {/*        id="date"*/}
-        {/*        placeholderText={"Enter a Date"}*/}
-        {/*        selected={date}*/}
-        {/*        dateFormat="dd/MM/yyyy"*/}
-        {/*        onChange={(date) => {*/}
-        {/*            setInputState({...inputState, date: date})*/}
-        {/*        }}*/}
-        {/*    />*/}
-        {/*</div>*/}
+        <div className="input-control">
+            <DatePicker
+                id="date"
+                placeholderText={"Enter a Date"}
+                selected={date}
+                name={"income[date]"}
+                dateFormat="dd/MM/yyyy"
+                onChange={(date) => {
+                    setInputState({...inputState, date: date})
+                }}
+            />
+        </div>
             <div className="selects input-control">
-                <select required value={category} name="category" id="category" onChange={handleInput('category')}>
+                <select required value={category} name="income[category]" id="category" onChange={handleInput('category')}>
                     <option value=""  disabled >Select Option</option>
                     <option value="salary">Salary</option>
                     <option value="freelancing">Freelancing</option>
@@ -63,7 +72,7 @@ export const Form = () => {
             </div>
             <div className="input-control">
                 <textarea
-                    name="description"
+                    name="income[description]"
                     value={description}
                     placeholder='Add A Reference'
                     id="description"

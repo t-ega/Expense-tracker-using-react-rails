@@ -1,30 +1,38 @@
 class IncomesController < ApplicationController
   # This controller requires that every routes to be accessed must be done from
   # an authorized user
+  protect_from_forgery prepend: true
   before_action :authenticate_user!
   before_action :set_income, only: %i[show edit update destroy]
-  protect_from_forgery prepend: true
 
 
   def index
-   @incomes = Income.where(user=current_user)
+   @incomes = current_user.income.all
+   render "tracker/index"
   end
 
   def show
+    render 'index'
   end
 
   def new
+    puts "lfll"
     @income = current_user.income.build
   end
 
   def create
+
     @income = current_user.income.build(income_params)
 
     if @income.save
       redirect_to @income, notice: 'Income was successfully created.'
+
     else
-      render :new, {alert: "Income was not successfully created"}
+      flash[:alert] = "Income was not successfully created: #{@income.errors.full_messages.join(', ')}"
+      render 'index'
+
     end
+
   end
 
   def edit
