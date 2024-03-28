@@ -15,13 +15,6 @@
   </head>
 
   <body>
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %> notice</div>
-  <% end %>
-
-  <% if flash[:alert] %>
-    <div class="notice"><%= flash[:alert] %></div>
-  <% end %>
 
   <%= yield %>
   </body>

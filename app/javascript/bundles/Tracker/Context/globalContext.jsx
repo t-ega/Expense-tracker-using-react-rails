@@ -3,7 +3,7 @@ import React, { useContext } from "react"
 
 const GlobalContext = React.createContext()
 
-export const GlobalProvider = ({ children, appData}) => {
+export const GlobalProvider = ({ children, appData, user }) => {
     // Some functions in this provider are redundant
     // I'm not ready to extract the logic or refactor!
 
@@ -46,6 +46,7 @@ export const GlobalProvider = ({ children, appData}) => {
             appData,
             transactionHistory,
             totalBalance,
+            user
 
         }}>
             {children}

@@ -4,8 +4,5 @@ import {useWindowSize} from "../../utils/useWindowSize";
 
 export const Orb = () => {
     const {width, height} = useWindowSize();
-    console.log(width, height)
-    return <OrbStyled width={width} height={height}>
-
-    </OrbStyled>
+    return <OrbStyled width={width} height={height} />
 }

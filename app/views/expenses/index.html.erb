@@ -2,4 +2,8 @@
 <%#  current page 4 represents the expense section %>
 <%# Note: This is not the best approach, but I'm keeping the logic minimal for the frontend %>
 
-<%= react_component("App", props: { appData:  { currentPage: 4, incomes: @incomes ||= [], expenses: @expenses, expense: @expense, csrf_token: form_authenticity_token  }}) %>
+<%= react_component("App", props: { current_user: @user, appData:  { currentPage: 4, incomes: @incomes ||= [],
+                                                expenses: @expenses, expense: @expense,
+                                                csrf_token: form_authenticity_token  },
+                                    alert: @alert, notice: @notice
+}) %>

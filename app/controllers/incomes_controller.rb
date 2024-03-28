@@ -4,6 +4,7 @@ class IncomesController < ApplicationController
   protect_from_forgery prepend: true
   before_action :authenticate_user!
   before_action :set_income, only: %i[show edit update destroy]
+  before_action :set_current_user
 
 
   def index
@@ -25,10 +26,11 @@ class IncomesController < ApplicationController
     @income = current_user.income.build(income_params)
     @incomes = current_user.income.all
     if @income.save
-      redirect_to incomes_url, notice: 'Income was successfully created.'
+        @notice= 'Income was successfully created.'
+      redirect_to incomes_url
 
-    else
-      flash[:alert] = "Income was not successfully created: #{@income.errors.full_messages.join(', ')}"
+      else
+        @alert = "Income was not successfully created: #{@income.errors.full_messages.join(', ')}"
       render 'index'
 
     end
@@ -55,6 +57,10 @@ class IncomesController < ApplicationController
 
   def set_income
     @income = current_user.income.find(params[:id])
+  end
+
+  def set_current_user
+    @user = current_user.email
   end
 
   def income_params

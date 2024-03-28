@@ -5,6 +5,7 @@ class ExpensesController < ApplicationController
   protect_from_forgery prepend: true
   before_action :authenticate_user!
   before_action :set_expense, only: [:destroy]
+  before_action :set_current_user
 
   def index
     @expenses = current_user.expense.all ||= []
@@ -21,9 +22,10 @@ class ExpensesController < ApplicationController
     @expenses = current_user.expense.all
 
     if @expense.save
-      redirect_to expenses_url, notice: 'Expense was successfully created.'
+      @notice= 'Expense was successfully created.'
+      redirect_to expenses_url
     else
-      flash[:alert] = "Expense was not successfully created: #{@expense.errors.full_messages.join(', ')}"
+      @alert = "Expense was not successfully created: #{@expense.errors.full_messages.join(', ')}"
       render "index"
     end
   end
@@ -47,6 +49,10 @@ class ExpensesController < ApplicationController
 
   def set_expense
     @expense = current_user.expense.find(params[:id])
+  end
+
+  def set_current_user
+    @user = current_user.email
   end
 
   def expense_params

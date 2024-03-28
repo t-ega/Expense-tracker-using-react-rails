@@ -38,7 +38,7 @@ export const OrbStyled = styled.div`
     margin-left: -37vh;
     margin-right: -37vh;
     background: linear-gradient(180deg, #F56692 0%, #F2994A 100%);
-    filter: blur(400px);
+    filter: blur(100px);
     z-index: -1;
     animation: ${props => moveOrb(props.width, props.height)} 15s alternate linear infinite;
     
@@ -78,6 +78,11 @@ export const NavStyled = styled.nav`
         p{
             color: rgba(34, 34, 96, .6);
         }
+        
+    }
+    .bottom-nav {
+        cursor: pointer;
+     }
         
     }
     .menu-items {
