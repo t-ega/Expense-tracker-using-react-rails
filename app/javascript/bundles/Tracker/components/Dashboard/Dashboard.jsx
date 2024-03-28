@@ -8,7 +8,7 @@ import {History} from "../History/History";
 
 export const Dashboard = () => {
     const { appData, totalBalance } = useGlobalContext()
-    const {total, total_expenses} = appData
+    const {total, total_expenses, incomes, expenses} = appData
 
     return <DashboardStyled>
         <InnerLayout>
@@ -38,8 +38,30 @@ export const Dashboard = () => {
                     </div>
                 </div>
                 <div className="history-con">
-                    <History></History>
+                    <History />
+                        <h2 className="salary-title">
+                            Min<span>Salary</span>Max
+                        </h2>
+                    <div className="salary-item">
+                        <p>
+                            {Math.min(...incomes.map(inc => inc.amount))}
+                        </p>
+                        <p>
+                            {Math.max(...incomes.map(inc => inc.amount))}
+                        </p>
+                    </div>
+                        <h2 className="salary-title">
+                            Min<span>Expense</span>Max
+                        </h2>
+                    <div className="salary-item">
+                        <p>
+                            {Math.min(...expenses.map(exp => exp.amount))}
+                        </p>
+                        <p>
+                            {Math.max(...expenses.map(exp => exp.amount))}
+                        </p>
                 </div>
+                    </div>
             </div>
         </InnerLayout>
     </DashboardStyled>

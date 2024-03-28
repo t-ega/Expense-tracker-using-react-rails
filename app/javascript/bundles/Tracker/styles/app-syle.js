@@ -128,6 +128,74 @@ export const NavStyled = styled.nav`
 `
 
 export const DashboardStyled = styled.div`
+    .stats-con {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2rem;
+        .chart-con {
+            grid-column: 1 / 4;
+            height: 400px;
+            .amount-con {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+                margin-top: 2rem;
+                .income, .expense {
+                    grid-column: span 2;
+                }
+                .income, .expense,.balance{
+                    background: #FCF6F9;
+                    border: 2px solid #FFFFFF;
+                    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                    padding: 1rem;
+                    border-radius: 20px;
+                    height: 100%;
+                    p {
+                        font-size: 3.5rem;
+                        font-weight: 700;
+                    }
+                }
+                .balance {
+                    grid-column: 2/4;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    p {
+                        color: var(--color-green);
+                        opacity: 0.6;
+                        font-size: 2.5rem;
+                    }
+                }
+            }
+        }
+        .history-con {
+            grid-column: 4 / 6;
+            h2 {
+                margin: 1rem 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .salary-title {
+                font-size: 1.2rem;
+                span{
+                font-size: 1.8rem;
+                }
+            }
+            .salary-item{
+                background: #FCF6F9;
+                border: 2px solid #FFFFFF;
+                box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                padding: 1rem;
+                border-radius: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+
 `
 
 export const FormStyled = styled.form`
@@ -297,10 +365,20 @@ export const ChartStyled = styled.div`
 `;
 
 export const HistoryStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`
+
+export const HistoryItemStyled = styled.div`
     background: #FCF6F9;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 20px;
     height: 100%;
+    color: ${props => props.entry_type === "expense" ? "red" : "var(--color-green)" }
 `
