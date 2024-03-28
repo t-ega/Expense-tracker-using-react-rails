@@ -39,6 +39,12 @@ export const Form = () => {
                 value={ csrf_token }
                 name={"authenticity_token"}
             />
+
+            <input
+                type="hidden"
+                value={ "income" }
+                name={"income[entry_type]"}
+            />
         </div>
         <div className="input-control">
             <input

@@ -5,5 +5,6 @@ class Expense < ApplicationRecord
   validates :date, presence: true
   validates :category, presence: true
   validates :user, presence: true
+  validates :type, presence:true
   validates :description, presence: true, length: { maximum: 50 }
 end

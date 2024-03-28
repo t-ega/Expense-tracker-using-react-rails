@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 
 import {IncomeStyled} from "../../styles/app-syle";
 import {InnerLayout} from "../../styles/layouts";

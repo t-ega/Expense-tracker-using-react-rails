@@ -40,6 +40,15 @@ export const ExpenseForm = () => {
                     name={"authenticity_token"}
                 />
             </div>
+
+            <div className="input-control">
+                <input
+                    type="hidden"
+                    value={"expense"}
+                    name={"expense[entry_type]"}
+                />
+            </div>
+
             <div className="input-control">
                 <input
                     type="text"
