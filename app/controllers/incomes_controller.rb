@@ -55,6 +55,10 @@ class IncomesController < ApplicationController
 
   private
 
+  def set_incomes
+
+  end
+
   def set_income
     @income = current_user.income.find(params[:id])
   end

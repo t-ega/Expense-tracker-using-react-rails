@@ -1,0 +1,15 @@
+<%#--This partial would be used to render multiple App components but with different -->
+<!--properties. #%>
+<%= react_component("App", props: {
+  current_user: @user,
+  appData: {
+    currentPage: current_page ,
+    incomes: @incomes ||= [],
+    expenses: @expenses ||= [],
+    expense: @expense,
+    income: @income,
+    csrf_token: form_authenticity_token
+  },
+    alert: @alert,
+    notice: @notice
+}) %>

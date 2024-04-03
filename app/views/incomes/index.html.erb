@@ -1,7 +1,4 @@
 <%#  current page 3 represents the incomes section %>
 <%#  Note: This is not the best approach, but I'm keeping the logic minimal for the frontend %>
 
-
-<%= react_component("App", props: {  current_user: @user, appData:  { currentPage: 3, incomes: @incomes, income: @income,
-                                                csrf_token: form_authenticity_token, expenses: []  },
-                                    alert: @alert, notice: @notice }) %>
+<%= render partial: "/shared/react_app",  locals: {current_page: 3}%>
